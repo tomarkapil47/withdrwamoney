@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .input-box {
+            width: 380px;
+            height: 200px;
+            background: rgb(210, 192, 30);
+            margin: 100px auto;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 11px 9px 14px 0px rgb(204, 215, 219);
+            -webkit-box-shadow: 11px 9px 14px 0px rgb(194, 217, 226);
+            -moz-box-shadow: 11px 9px 14px 0px rgb(210, 219, 223);
+        }
+
+        .form-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .form-box input {
+            width: 100%;
+            outline: 0;
+            border: none;
+            padding: 5px;
+            display: block;
+
+        }
+
+        .form-box button {
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 5px;
+            display: block;
+        }
+
+        span {
+            color: red;
+            font-weight: 600;
+        }
+        .form-box .detail p{
+            font-size: 20px;
+            font-weight: 500;
+         
+        }
+        .form-box .detail{
+            margin: 10px 0px;
+        }
+        .form-box .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: absolute;
+            bottom: 0px ;
+            left: 0px;
+            width: 100%;
+            
+        }
+        .form-box .info .abc{font-size: 32px;
+            font-family:serif;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-box" id="input">
+        <div class="form-box">
+            <input type="text" placeholder="username" id="user" autocomplete="off">
+            <span id="msg"></span>
+            <button id="btn" onclick="user()">Submit</button>
+            <div class="detail">
+                <p>Username:abc</p>
+            <p>Password:1234</p>
+            <div class="info">
+                <div>Kapil Tomar</div>
+                <div class="abc">VISA</div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var count = 1;
+        var count2 = 1;
+        var bal = 100000;
+
+
+        function amount() {
+            var amount = document.getElementById("amt").value;
+            var total = bal - amount;
+            if (total >= 0) {
+                document.getElementById("input").innerHTML = `<h2>Your Remaning Balance=${total}</h2><br><table border="1px"> <tr><th>Balance</th><th>Withdwar</th><th>Total
+                    </th></tr><tr><td>${bal}</td><td>${amount}</td><td>${total}</td></tr>`
+            }
+            else {
+                document.getElementById("input").innerHTML = "<h2>You Have Insufficent Balance"
+            }
+        }
+
+        function pass() {
+            var password = document.getElementById("password").value;
+            if (password != 1234) {
+                document.getElementById("msg2").innerHTML = `*******Please Enter The Valid Username count=${count2}`
+                count2++;
+                if (count2 <= 3) {
+                    document.getElementById("msg2").innerHTML = `*****Please Enter The Valid Username count=${count2}`
+                }
+                else {
+                    document.getElementById("input").innerHTML = "<h2>You Cross Maximum Limit Try Again</h2>"
+                }
+            }
+            else {
+
+                document.getElementById("input").innerHTML = ` <div class="form-box">
+            <input type="text" placeholder="Amount" id="amt">
+            <span id="msg3"></span>
+            <button id="btn" onclick="amount()">Submit</button>
+        </div>`
+
+            }
+        }
+
+
+
+
+
+
+        function user() {
+            var username = document.getElementById("user").value;
+            if (username != "abc") {
+                document.getElementById("msg").innerHTML = `*******Please Enter The Valid Username count=${count}`
+                count++;
+                if (count <= 3) {
+                    document.getElementById("msg").innerHTML = `*****Please Enter The Valid Username count=${count}`
+                }
+                else {
+                    document.getElementById("input").innerHTML = "<h2>You Cross Maximum Limit Try Again</h2>"
+                }
+            }
+            else {
+                document.getElementById("input").innerHTML = ` <div class="form-box">
+            <input type="text" placeholder="Password" id="password">
+            <span id="msg2"></span>
+            <button id="btn" onclick="pass()">Submit</button>
+        </div>`
+            }
+        }
+    </script>
+
+</body>
+
+</html>
